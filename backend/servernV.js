@@ -14,8 +14,20 @@ const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(cors({
-  origin: ["http://localhost:3011", "https://smsbot-rstj.onrender.com"]
+  origin: (origin, callback) => {
+    const whitelist = [
+      "http://localhost:3011",
+      "https://smsbot-rstj.onrender.com"
+    ];
+    if (!origin || whitelist.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS nicht erlaubt"));
+    }
+  },
+  credentials: true,
 }));
+
 
 app.use(express.json());
 
