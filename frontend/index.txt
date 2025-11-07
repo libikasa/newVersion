@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Presentation of operational bot</title>
+</head>
+<body>
+  <h1>Presentation of operational bot</h1>
+  <p>Here you can test in the right corner chat box👇</p>
+
+  <script src="widget.js"></script>
+</body>
+</html>
