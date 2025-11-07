@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // === Funktion: Nachricht senden ===
-  async function sendMessage() {
+ /* async function sendMessage() {
     const text = input.value.trim();
     if(!text) return;
     addMessage("Du", text);
@@ -112,5 +112,18 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error(err);
       addMessage("AI", "Fehler bei der Kommunikation mit dem Server.");
     }
-  }
+  }*/
+ // Statt "http://localhost:3011/chat"
+const BACKEND_URL = window.location.origin;
+
+async function sendMessage(message) {
+  const response = await fetch(`${BACKEND_URL}/chat`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message, userLang: "de", userEmail: "test@example.com" })
+  });
+  const data = await response.json();
+  return data.reply;
+}
+
 });
